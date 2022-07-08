@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "TV",
+      "price": 1000,
+      "currency": "USD",
+      "id": 1
+    },
+    {
+      "name": "SSD",
+      "price": 100,
+      "currency": "USD",
+      "id": 2
+    }
+  ],
+  "permissions": [
+    "CREATE",
+    "READ",
+    "UPDATE",
+    "DELETE"
+  ]
+}
