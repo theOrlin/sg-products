@@ -2,9 +2,9 @@
 
 ## To Start
 
-In the project directory, run the following in order:
+In the project directory, run the following commands in order:
 
-1. `npm server`
+1. `npm run server`
 2. `npm start`
 
 `npm server` runs the mock api on port 3001.
