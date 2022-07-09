@@ -48,18 +48,14 @@ function App() {
   };
 
   const deleteProduct = (productId) => {
-    if (
-      window.confirm('Are you really sure you want to DELETE this product?')
-    ) {
-      axios
-        .delete(`/products/${productId}`)
-        .then(() => {
-          fetchProducts();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    axios
+      .delete(`/products/${productId}`)
+      .then(() => {
+        fetchProducts();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const editProduct = (productId, product) => {

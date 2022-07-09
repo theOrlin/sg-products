@@ -13,6 +13,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditDialog from './EditDialog';
+import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 
 const ProductsTable = ({
   products,
@@ -21,16 +22,26 @@ const ProductsTable = ({
   allowEdit,
   editProduct,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const editCurrentProduct = (product) => {
     setCurrentProduct(product);
-    setOpen(true);
+    setEditDialogOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleEditDialogClose = () => {
+    setEditDialogOpen(false);
+  };
+
+  const deleteCurrentProduct = (product) => {
+    setCurrentProduct(product);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteDialogClose = () => {
+    setDeleteDialogOpen(false);
   };
 
   const tableRows = products.map((product, idx) => (
@@ -55,7 +66,7 @@ const ProductsTable = ({
           <IconButton
             aria-label="delete"
             color="secondary"
-            onClick={() => deleteProduct(product.id)}
+            onClick={() => deleteCurrentProduct(product)}
             title="Delete product"
           >
             <DeleteIcon />
@@ -100,10 +111,16 @@ const ProductsTable = ({
         </Table>
       </TableContainer>
       <EditDialog
-        open={open}
-        onClose={handleClose}
+        open={editDialogOpen}
+        onClose={handleEditDialogClose}
         product={currentProduct}
         editProduct={editProduct}
+      />
+      <DeleteConfirmationDialog
+        open={deleteDialogOpen}
+        productId={currentProduct.id}
+        onClose={handleDeleteDialogClose}
+        deleteProduct={deleteProduct}
       />
     </>
   );

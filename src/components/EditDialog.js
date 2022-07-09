@@ -42,14 +42,14 @@ const EditDialog = ({ open, onClose, product, editProduct }) => {
   return (
     <Dialog open={open} onClose={handleCancel}>
       <DialogTitle color="primary">Edit Product</DialogTitle>
-      <DialogContent dividers sx={{ p: 2 }}>
+      <DialogContent sx={{ p: 2 }}>
         <TextField
           color="secondary"
           label="Product name"
           onChange={(e) => setProductName(e.target.value)}
           value={productName || ''}
           size="small"
-          sx={{ mb: 2 }}
+          sx={{ mb: 2, mt: 1 }}
           fullWidth
         ></TextField>
         <TextField
