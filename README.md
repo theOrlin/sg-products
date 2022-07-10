@@ -17,7 +17,7 @@ Mock data for the project is located in the `/api/api.json` file.
 
 ## Packages Used
 
-- [Create React App](create-react-app.dev)
-- axios
-- json-server
-- [Material UI](https://mui.com/) library
+- [Create React App](https://create-react-app.dev/)
+- [axios](https://github.com/axios/axios)
+- [json-server](https://github.com/typicode/json-server)
+- [Material UI](https://mui.com/)
