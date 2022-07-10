@@ -11,7 +11,11 @@ In the project directory, run the following commands in order:
 
 `npm start` starts the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Packages used
+## Project Data
+
+Mock data for the project is located in the `/api/api.json` file.
+
+## Packages Used
 
 - [Create React App](create-react-app.dev)
 - axios
