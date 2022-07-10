@@ -1,4 +1,4 @@
-# Simple Products App
+# Simple Products Manager App
 
 ## To Start
 
