@@ -76,7 +76,7 @@ function App() {
         <Grid item xs={6}>
           <header>
             <Typography variant="h2" color="primary" sx={{ my: 4 }}>
-              Products
+              Products Manager
             </Typography>
           </header>
           {permissions.includes(PERMISSIONS.CREATE) && (
