@@ -1,4 +1,4 @@
-# Simple Products App
+# Simple Products Manager App
 
 ## To Start
 
@@ -11,9 +11,13 @@ In the project directory, run the following commands in order:
 
 `npm start` starts the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Packages used
+## Project Data
 
-- [Create React App](create-react-app.dev)
-- axios
-- json-server
-- [Material UI](https://mui.com/) library
+Mock data for the project is located in the `/api/api.json` file.
+
+## Packages Used
+
+- [Create React App](https://create-react-app.dev/)
+- [axios](https://github.com/axios/axios)
+- [json-server](https://github.com/typicode/json-server)
+- [Material UI](https://mui.com/)
