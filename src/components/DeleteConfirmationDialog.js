@@ -1,15 +1,18 @@
+import { useContext } from 'react';
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const DeleteConfirmationDialog = ({
-  open,
-  onClose,
-  deleteProduct,
-  productId,
-}) => {
+import ProductContext from '../context/products-context';
+import deleteProduct from '../rest/deleteProduct';
+
+const DeleteConfirmationDialog = ({ open, onClose, productId }) => {
+  const { products, setProducts } = useContext(ProductContext);
+
   const handleDelete = () => {
-    deleteProduct(productId);
+    deleteProduct(productId).then(() =>
+      setProducts(products.filter((product) => product.id !== productId))
+    );
     onClose();
   };
 

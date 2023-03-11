@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   Table,
   TableBody,
@@ -15,16 +15,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditDialog from './EditDialog';
 import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 
-const ProductsTable = ({
-  products,
-  deleteProduct,
-  allowDelete,
-  allowEdit,
-  editProduct,
-}) => {
+import ProductContext from '../context/products-context';
+
+const ProductsTable = ({ allowDelete, allowEdit }) => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const { products } = useContext(ProductContext);
 
   const editCurrentProduct = (product) => {
     setCurrentProduct(product);
@@ -114,13 +111,11 @@ const ProductsTable = ({
         open={editDialogOpen}
         onClose={handleEditDialogClose}
         product={currentProduct}
-        editProduct={editProduct}
       />
       <DeleteConfirmationDialog
         open={deleteDialogOpen}
         productId={currentProduct.id}
         onClose={handleDeleteDialogClose}
-        deleteProduct={deleteProduct}
       />
     </>
   );

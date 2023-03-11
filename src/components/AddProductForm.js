@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Button, Box, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-const AddProductForm = ({ addProduct }) => {
+import ProductContext from '../context/products-context';
+import addProduct from '../rest/addProduct';
+
+const AddProductForm = () => {
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productCurrency, setProductCurrency] = useState('');
+  const { products, setProducts } = useContext(ProductContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +17,7 @@ const AddProductForm = ({ addProduct }) => {
       name: productName,
       price: productPrice,
       currency: productCurrency,
-    });
+    }).then((newProduct) => setProducts([...products, newProduct]));
     setProductName('');
     setProductPrice('');
     setProductCurrency('');

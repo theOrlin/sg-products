@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -10,10 +10,14 @@ import {
 import CheckIcon from '@mui/icons-material/Check';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const EditDialog = ({ open, onClose, product, editProduct }) => {
+import ProductContext from '../context/products-context';
+import editProduct from '../rest/editProduct';
+
+const EditDialog = ({ open, onClose, product }) => {
   const [productName, setProductName] = useState(product.name);
   const [productPrice, setProductPrice] = useState(product.price);
   const [productCurrency, setProductCurrency] = useState(product.currency);
+  const { products, setProducts } = useContext(ProductContext);
 
   useEffect(() => {
     setProductName(product.name);
@@ -26,6 +30,13 @@ const EditDialog = ({ open, onClose, product, editProduct }) => {
       name: productName,
       price: productPrice,
       currency: productCurrency,
+    }).then((editedData) => {
+      const editedProductIndex = products.findIndex(
+        (product) => product.id === editedData.id
+      );
+      const newProducts = products.slice();
+      newProducts[editedProductIndex] = editedData;
+      setProducts(newProducts);
     });
 
     onClose();
